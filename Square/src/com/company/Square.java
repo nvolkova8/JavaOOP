@@ -20,5 +20,22 @@ class Square {
     public void zoomSquare(double k) {
         dl_s = dl_s * k;
     }
+    // периметр
+    public double perimeterSquare() {
+        double p = 4 * dl_s;
+        return p;
+    }
+    // перемещает центр в случайную точку проскости
+    public void moveRandomSquare() {
+        x = (int) (Math.random() * 199) - 99;
+        y = (int) (Math.random() * 199) - 99;
+    }
+    // расстояние между центрами двух квадратов
+    public double distanceСentersSquares(Square squ2) {
+        double a = this.x - squ2.x;
+        double b = this.y - squ2.y;
+        double c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
+        return c;
+    }
 }
 
