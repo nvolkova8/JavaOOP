@@ -34,7 +34,7 @@ class Square {
     public double distanceСentersSquares(Square squ2) {
         double a = this.x - squ2.x;
         double b = this.y - squ2.y;
-        double c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
+        double c = Math.sqrt(a * a + b * b);
         return c;
     }
 }
