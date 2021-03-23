@@ -1,11 +1,14 @@
 package com.company;
 
 public class Vector3D {
-    public Point3D startPoint;
-    public Point3D endPoint;
-    public Vector3D(Point3D a, Point3D b) { // конструктор
-        startPoint = a;
-        endPoint = b;
+    public double x;
+    public double y;
+    public double z;
+
+    public Vector3D(double x1, double y1, double z1) {
+        x = x1;
+        y = y1;
+        z = z1;
     }
 
     @Override
@@ -22,31 +25,19 @@ public class Vector3D {
 
         // 3
         Vector3D v = (Vector3D) o;
-        return this.startPoint.x == v.startPoint.x &&
-                this.startPoint.y == v.startPoint.y &&
-                this.startPoint.z == v.startPoint.z &&
-                this.endPoint.x == v.endPoint.x &&
-                this.endPoint.y == v.endPoint.y &&
-                this.endPoint.z == v.endPoint.z;
+            return this.x == v.x && this.y == v.y && this.z == v.z;
     }
-
-    public void print(){
-        System.out.println("Начало вектора: " + startPoint.x + ", " + startPoint.y + ", " + startPoint.z);
-        System.out.println("Конец вектора: " + endPoint.x + ", " + endPoint.y + ", " + endPoint.z);
-        return;
-    }
-
 
     public double getX(){
-        return endPoint.x - startPoint.x;
+        return x;
     }
 
     public double getY(){
-        return endPoint.y - startPoint.y;
+        return y;
     }
 
     public double getZ(){
-        return endPoint.z - startPoint.z;
+        return z;
     }
 
     public double scalar(Vector3D v){
@@ -54,35 +45,28 @@ public class Vector3D {
     }
 
     public double len(){
-        return Math.sqrt(this.getX() * this.getX() + this.getY() * this.getY() + this.getZ() * this.getZ());
+        return Math.sqrt(this.getX() * this.getX() +
+                this.getY() * this.getY() +
+                this.getZ() * this.getZ());
     }
 
    public Vector3D multiply(double factor){
-       return new Vector3D(
-               new Point3D(startPoint.x * factor, startPoint.y * factor, startPoint.z * factor),
-               new Point3D(endPoint.x * factor, endPoint.y * factor, endPoint.z * factor)
-       );
+       return new Vector3D(this.getX() * factor, this.getY() * factor, this.getZ() * factor);
+
    }
 
     public Vector3D add(Vector3D v){
-        return new Vector3D(
-                new Point3D(startPoint.x + v.startPoint.x, startPoint.y + v.startPoint.y, startPoint.z + v.startPoint.z),
-                new Point3D(endPoint.x + v.endPoint.x, endPoint.y + v.endPoint.y, endPoint.z + v.endPoint.z)
-        );
+        return new Vector3D(this.getX() + v.getX(), this.getY() + v.getY(), this.getZ() + v.getZ());
     }
 
     public Vector3D sub(Vector3D v){
-        return new Vector3D(
-                new Point3D(startPoint.x - v.startPoint.x, startPoint.y - v.startPoint.y, startPoint.z - v.startPoint.z),
-                new Point3D(endPoint.x - v.endPoint.x, endPoint.y - v.endPoint.y, endPoint.z - v.endPoint.z)
-        );
+        return new Vector3D(this.getX() - v.getX(), this.getY() - v.getY(), this.getZ() - v.getZ());
     }
 
     public Vector3D vecX(Vector3D v){
-        return new Vector3D(
-                new Point3D(this.getZ() * v.getY(),this.getX() * v.getZ(),this.getY()*v.getX()),
-                new Point3D(this.getY()*v.getZ(), this.getZ()*v.getX(), this.getX()*v.getY())
-        );
+        return new Vector3D(this.getY() * v.getZ() - this.getZ() * v.getY(),
+                this.getZ() * v.getX() - this.getX() * v.getZ(),
+                this.getX() * v.getY() - this.getY() * v.getX());
     }
 
     public boolean pcollin(Vector3D v){

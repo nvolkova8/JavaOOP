@@ -18,7 +18,7 @@ public class SegmentTest {
         System.out.println("Z: ");
         z = sc.nextDouble();
         sc.nextLine();
-        Point3D a = new Point3D(x,y,z);
+        Vector3D a = new Vector3D(x,y,z);
 
         System.out.println("Координаты второй точки отрезка: ");
         System.out.println("X: ");
@@ -30,7 +30,7 @@ public class SegmentTest {
         System.out.println("Z: ");
         z = sc.nextDouble();
         sc.nextLine();
-        Point3D b = new Point3D(x,y,z);
+        Vector3D b = new Vector3D(x,y,z);
 
         Segment seg = new Segment(a, b);
         System.out.println("Длина отрезка: " + seg.len());
@@ -45,7 +45,7 @@ public class SegmentTest {
         System.out.println("Z: ");
         z = sc.nextDouble();
         sc.nextLine();
-        Point3D point = new Point3D(x,y,z);
+        Vector3D point = new Vector3D(x,y,z);
 
         System.out.println("Расстояние от точки до отрезка: " + seg.distanceTo(point));
     }
